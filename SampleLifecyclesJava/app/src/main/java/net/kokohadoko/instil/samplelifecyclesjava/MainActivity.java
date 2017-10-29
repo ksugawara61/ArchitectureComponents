@@ -1,19 +1,27 @@
 package net.kokohadoko.instil.samplelifecyclesjava;
 
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.Observer;
 import android.os.SystemClock;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Chronometer;
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.widget.TextView;
 
-public class MainActivity extends LifecycleActivity {
+public class MainActivity extends AppCompatActivity implements LifecycleOwner {
 
+    private final LifecycleRegistry registry = new LifecycleRegistry(this);
     private LiveDataTimerViewModel liveDataTimerViewModel;
+
+    @Override
+    public LifecycleRegistry getLifecycle() {
+        return registry;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
