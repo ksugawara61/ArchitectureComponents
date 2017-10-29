@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+    dataBinding {
+        enabled = true
+    }
+
     compileSdkVersion 26
     defaultConfig {
         applicationId "net.kokohadoko.instil.samplelifecyclesjava"
